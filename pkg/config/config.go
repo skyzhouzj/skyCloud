@@ -6,11 +6,17 @@ import (
 )
 
 type SkyCloud struct {
-	ProjectName          string `json:"ProjectName"`
-	ProjectVersion       string `json:"ProjectVersion"`
-	ProjectDomain        string `json:"ProjectDomain"`
-	ProjectPort          string `json:"ProjectPort"`
-	ProjectAccessLogFile string `json:"ProjectAccessLogFile"`
+	ProjectName             string `json:"ProjectName"`
+	ProjectVersion          string `json:"ProjectVersion"`
+	ProjectDomain           string `json:"ProjectDomain"`
+	ProjectPort             string `json:"ProjectPort"`
+	ProjectAccessLogFile    string `json:"ProjectAccessLogFile"`
+	HeaderLoginToken        string `json:"HeaderLoginToken"`
+	HeaderSignToken         string `json:"HeaderSignToken"`
+	HeaderSignTokenDate     string `json:"HeaderSignTokenDate"`
+	RedisKeyPrefixRequestID string `json:"RedisKeyPrefixRequestID"`
+	RedisKeyPrefixLoginUser string `json:"RedisKeyPrefixLoginUser"`
+	RedisKeyPrefixSignature string `json:"RedisKeyPrefixSignature"`
 }
 type DataSource struct {
 	DbType       string `json:"dbType"`
