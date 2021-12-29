@@ -6,6 +6,7 @@ import (
 	"github.com/skyzhouzj/skyCloud/pkg/errors"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 	"time"
 )
@@ -61,7 +62,7 @@ func dbConnect(user, pass, addr, dbName string) (*gorm.DB, error) {
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
 		},
-		//Logger: logger.Default.LogMode(logger.Info), // 日志配置
+		Logger: logger.Default.LogMode(logger.Info), // 日志配置
 	})
 
 	if err != nil {
@@ -84,7 +85,7 @@ func dbConnect(user, pass, addr, dbName string) (*gorm.DB, error) {
 	sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
 
 	// 设置最大连接超时
-	sqlDB.SetConnMaxLifetime(time.Minute * cfg.ConnMaxLifeTime)
+	sqlDB.SetConnMaxLifetime(time.Minute * 1000)
 
 	// 使用插件
 	db.Use(&TracePlugin{})

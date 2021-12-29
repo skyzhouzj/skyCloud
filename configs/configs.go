@@ -13,7 +13,7 @@ type Config struct {
 }
 
 func init() {
-	cfg.Init(config, "../", "dev")
+	cfg.Init(config, "./", "dev")
 }
 
 func Get() Config {

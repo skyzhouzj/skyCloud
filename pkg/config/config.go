@@ -3,7 +3,6 @@ package config
 import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"time"
 )
 
 type SkyCloud struct {
@@ -25,16 +24,16 @@ type Hashids struct {
 	Secret string `json:"secret"`
 }
 type DataSource struct {
-	DbType          string        `json:"dbType"`
-	Path            string        `json:"path"`
-	Config          string        `json:"config"`
-	DbName          string        `json:"db-name"`
-	Username        string        `json:"username"`
-	Password        string        `json:"password"`
-	MaxIdleConns    int           `json:"max-idle-conns"`
-	MaxOpenConns    int           `json:"max-open-conns"`
-	LogMode         bool          `json:"log-mode"`
-	ConnMaxLifeTime time.Duration `json:"ConnMaxLifeTime"`
+	DbType          string `json:"dbType"`
+	Path            string `json:"path"`
+	Config          string `json:"config"`
+	DbName          string `json:"db-name"`
+	Username        string `json:"username"`
+	Password        string `json:"password"`
+	MaxIdleConns    int    `json:"max-idle-conns"`
+	MaxOpenConns    int    `json:"max-open-conns"`
+	LogMode         bool   `json:"log-mode"`
+	ConnMaxLifeTime int64  `json:"ConnMaxLifeTime"`
 }
 type Redis struct {
 	Db           int    `json:"db"`

@@ -1,7 +1,6 @@
 package router
 
 import (
-	"github.com/skyzhouzj/skyCloud/configs"
 	"github.com/skyzhouzj/skyCloud/pkg/cache"
 	"github.com/skyzhouzj/skyCloud/pkg/core"
 	"github.com/skyzhouzj/skyCloud/pkg/db"
@@ -24,15 +23,13 @@ type Server struct {
 	Cache cache.Repo
 }
 
-func NewHTTPServer(logger *zap.Logger, cronLogger *zap.Logger) (*Server, error) {
+func NewHTTPServer(logger *zap.Logger) (*Server, error) {
 	if logger == nil {
 		return nil, errors.New("logger required")
 	}
 
 	r := new(resource)
 	r.logger = logger
-
-	openBrowserUri := configs.Get().SkyCloud.ProjectDomain + configs.Get().SkyCloud.ProjectPort
 
 	// 初始化 DB
 	dbRepo, err := db.New()
@@ -49,7 +46,6 @@ func NewHTTPServer(logger *zap.Logger, cronLogger *zap.Logger) (*Server, error) 
 	r.cache = cacheRepo
 
 	mux, err := core.New(logger,
-		core.WithEnableOpenBrowser(openBrowserUri),
 		core.WithEnableCors(),
 		core.WithEnableRate(),
 	)

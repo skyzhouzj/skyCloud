@@ -241,11 +241,11 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 	}
 
 	fmt.Println(color.Blue(_UI))
-	fmt.Println(color.Green(fmt.Sprintf("* [register port %s]", configs.Get().SkyCloud.ProjectName)))
+	fmt.Println(color.Green(fmt.Sprintf("* [register port %s]", configs.Get().SkyCloud.ProjectPort)))
 	fmt.Println(color.Green(fmt.Sprintf("* [register env %s]", env.Active().Value())))
 
-	mux.engine.StaticFS("bootstrap", http.Dir("./assets/bootstrap"))
-	mux.engine.LoadHTMLGlob("./assets/templates/**/*")
+	//mux.engine.StaticFS("bootstrap", http.Dir("./assets/bootstrap"))
+	//mux.engine.LoadHTMLGlob("./assets/templates/**/*")
 
 	// withoutLogPaths 这些请求，默认不记录日志
 	withoutTracePaths := map[string]bool{
@@ -262,23 +262,14 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 		"/debug/pprof/heap":         true,
 		"/debug/pprof/mutex":        true,
 		"/debug/pprof/threadcreate": true,
-
-		"/favicon.ico": true,
-
-		"/system/health": true,
+		"/favicon.ico":              true,
+		"/system/health":            true,
 	}
 
 	opt := new(option)
 	for _, f := range options {
 		f(opt)
 	}
-
-	//if !opt.disablePProf {
-	//	if !env.Active().IsPro() {
-	//		pprof.Register(mux.engine) // register pprof to gin
-	//		fmt.Println(color.Green("* [register pprof]"))
-	//	}
-	//}
 
 	if !opt.disableSwagger {
 		if !env.Active().IsPro() {
@@ -308,11 +299,6 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 			OptionsPassthrough: true,
 		}))
 	}
-
-	//if opt.enableOpenBrowser != "" {
-	//	_ = browser.Open(opt.enableOpenBrowser)
-	//	fmt.Println(color.Green("* [register open browser '" + opt.enableOpenBrowser + "']"))
-	//}
 
 	// recover两次，防止处理时发生panic，尤其是在OnPanicNotify中。
 	mux.engine.Use(func(ctx *gin.Context) {
