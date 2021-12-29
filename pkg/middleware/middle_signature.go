@@ -12,15 +12,11 @@ import (
 )
 
 const (
-	ttl       = time.Minute * 2 // 签名超时时间 2 分钟
-	minLength = 2               // split space 最小长度
-	notUsed   = -1              // -1 表示被禁用
+	ttl       = time.Minute * 10 // 签名超时时间 10 分钟
+	minLength = 2                // split space 最小长度
+	notUsed   = -1               // -1 表示被禁用
 
 )
-
-var whiteListPath = map[string]bool{
-	"/login/web": true,
-}
 
 func (m *middleware) Signature() core.HandlerFunc {
 	return func(c core.Context) {
