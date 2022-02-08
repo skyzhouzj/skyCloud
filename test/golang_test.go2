@@ -1,0 +1,44 @@
+package test
+//
+//import (
+//	"fmt"
+//	"testing"
+//)
+//
+//func TestT(t *testing.T) {
+//	a := []Book{
+//		{"Second Book", 2},
+//		{"First Book", 1},
+//		{"Fifth Book", 5},
+//		{"Fourth Book", 4},
+//		{"Sixth Book", 6},
+//		{"Third Book", 3},
+//		{"shen", 8},
+//	}
+//	doSort(a)
+//	fmt.Println(a)
+//}
+//
+//
+//type Book struct {
+//	Name string
+//	Price int
+//}
+//
+//func (x Book) Less(y Book) bool {
+//	return y.Price < x.Price
+//}
+//
+//type Lesser[T any] interface {
+//	Less(y T) bool
+//}
+//
+//func doSort[T Lesser[T]](a []T) {
+//	for i := 0; i < len(a)-1; i++ {
+//		for j := i; j < len(a); j++ {
+//			if a[i].Less(a[j]) {
+//				a[i], a[j] = a[j], a[i]
+//			}
+//		}
+//	}
+//}

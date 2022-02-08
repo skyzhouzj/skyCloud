@@ -35,10 +35,15 @@ type Repo interface {
 	Exists(keys ...string) bool
 	Incr(key string, options ...Option) int64
 	Close() error
+	GetRepo() *redis.Client
 }
 
 type cacheRepo struct {
 	client *redis.Client
+}
+
+func (c *cacheRepo) GetRepo() *redis.Client {
+	return c.client
 }
 
 func New() (Repo, error) {

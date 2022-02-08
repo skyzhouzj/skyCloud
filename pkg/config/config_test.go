@@ -15,7 +15,6 @@ type ConfigT struct {
 
 func TestDotEnv(t *testing.T) {
 	var configt = new(ConfigT)
-	env.Init("dev")
 	Init(configt, "../../", env.Active().Value())
 	fmt.Println(configt)
 }

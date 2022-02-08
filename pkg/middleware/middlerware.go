@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"github.com/skyzhouzj/skyCloud/internal/api/service/authorized_service"
 	"github.com/skyzhouzj/skyCloud/pkg/cache"
 	"github.com/skyzhouzj/skyCloud/pkg/core"
 	"github.com/skyzhouzj/skyCloud/pkg/db"
@@ -25,16 +26,18 @@ type Middleware interface {
 }
 
 type middleware struct {
-	logger *zap.Logger
-	cache  cache.Repo
-	db     db.Repo
+	logger            *zap.Logger
+	cache             cache.Repo
+	db                db.Repo
+	authorizedService authorized_service.Service
 }
 
 func New(logger *zap.Logger, cache cache.Repo, db db.Repo) Middleware {
 	return &middleware{
-		logger: logger,
-		cache:  cache,
-		db:     db,
+		logger:            logger,
+		cache:             cache,
+		db:                db,
+		authorizedService: authorized_service.New(db, cache),
 	}
 }
 func (m *middleware) i() {}

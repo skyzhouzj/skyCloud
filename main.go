@@ -66,11 +66,11 @@ func main() {
 			}
 		},
 
-		// 关闭 cache
+		// 关闭 utils
 		func() {
 			if s.Cache != nil {
 				if err := s.Cache.Close(); err != nil {
-					accessLogger.Error("cache close err", zap.Error(err))
+					accessLogger.Error("utils close err", zap.Error(err))
 				}
 			}
 		},

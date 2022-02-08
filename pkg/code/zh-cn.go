@@ -21,6 +21,8 @@ var zhCNText = map[int]string{
 	MySQLExecError:     "SQL 执行失败",
 	GoVersionError:     "Go 版本不满足要求",
 
+	CaptchaError: "验证码获取失败",
+
 	AuthorizedCreateError:    "创建调用方失败",
 	AuthorizedListError:      "获取调用方列表失败",
 	AuthorizedDeleteError:    "删除调用方失败",

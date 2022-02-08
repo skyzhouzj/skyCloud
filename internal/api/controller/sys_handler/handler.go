@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
-//var _ Handler = (*handler)(nil)
+var _ Handler = (*handler)(nil)
 
 type Handler interface {
 	i()
@@ -24,7 +24,7 @@ type Handler interface {
 	// @Router /p/cs/Logout [post]
 	Logout() core.HandlerFunc
 
-	// Captcha 登出
+	// Captcha 验证码
 	// @Tags API.sys.Captcha
 	// @Router /p/c/Captcha [post]
 	Captcha() core.HandlerFunc

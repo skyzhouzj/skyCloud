@@ -27,12 +27,12 @@ type DataSource struct {
 	DbType          string `json:"dbType"`
 	Path            string `json:"path"`
 	Config          string `json:"config"`
-	DbName          string `json:"db-name"`
+	DbName          string `json:"dbname"`
 	Username        string `json:"username"`
 	Password        string `json:"password"`
-	MaxIdleConns    int    `json:"max-idle-conns"`
-	MaxOpenConns    int    `json:"max-open-conns"`
-	LogMode         bool   `json:"log-mode"`
+	MaxIdleConns    int    `json:"maxIdleConns"`
+	MaxOpenConns    int    `json:"maxOpenConns"`
+	LogMode         bool   `json:"logMode"`
 	ConnMaxLifeTime int64  `json:"ConnMaxLifeTime"`
 }
 type Redis struct {
@@ -42,6 +42,12 @@ type Redis struct {
 	MaxRetries   int    `json:"maxRetries"`
 	PoolSize     int    `json:"poolSize"`
 	MinIdleConns int    `json:"minIdleConns"`
+}
+
+type Captcha struct {
+	KeyLong   int `json:"keylong"`
+	ImgWidth  int `json:"imgwidth"`
+	ImgHeight int `json:"imgheight"`
 }
 
 //config加载

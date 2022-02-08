@@ -27,6 +27,8 @@ const (
 	MySQLExecError     = 10118
 	GoVersionError     = 10119
 
+	CaptchaError = 10120
+
 	AuthorizedCreateError    = 20101
 	AuthorizedListError      = 20102
 	AuthorizedDeleteError    = 20103

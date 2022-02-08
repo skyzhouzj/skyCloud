@@ -41,7 +41,7 @@ func NewHTTPServer(logger *zap.Logger) (*Server, error) {
 	// 初始化 Cache
 	cacheRepo, err := cache.New()
 	if err != nil {
-		logger.Fatal("new cache err", zap.Error(err))
+		logger.Fatal("new utils err", zap.Error(err))
 	}
 	r.cache = cacheRepo
 

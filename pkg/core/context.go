@@ -161,7 +161,7 @@ func (c *context) init() {
 		panic(err)
 	}
 
-	c.ctx.Set(_BodyName, body)                                   // cache body是为了trace使用
+	c.ctx.Set(_BodyName, body)                                   // utils body是为了trace使用
 	c.ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(body)) // re-construct req body
 }
 
